@@ -30,6 +30,7 @@
               "src/assets"
             ],
             "styles": [
+              "@angular/material/prebuilt-themes/pink-bluegrey.css",
               "src/styles.less"
             ],
             "scripts": []
@@ -93,12 +94,18 @@
               "src/assets"
             ],
             "styles": [
+              "@angular/material/prebuilt-themes/pink-bluegrey.css",
               "src/styles.less"
             ],
             "scripts": []
           }
         }
       }
+    }
+  },
+  "cli": {
+    "cache": {
+      "enabled": true
     }
   }
 }
