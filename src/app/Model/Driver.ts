@@ -1,4 +1,6 @@
 import { Race } from "./DriverQualyFying";
+import { SeasonTable } from "./Season";
+import { StandingsTable } from "./Standings";
 
 export interface Data {
     MRData: MRData;
@@ -13,6 +15,8 @@ export interface MRData {
     total:       string;
     DriverTable?: DriverTable;
     RaceTable?: RaceTable;
+    SeasonTable?: SeasonTable;
+    StandingsTable?: StandingsTable;
 }
 
 export interface RaceTable {

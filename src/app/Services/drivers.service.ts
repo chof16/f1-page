@@ -9,6 +9,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class DriversService {
 
+
   url_drivers = "https://ergast.com/api/f1/drivers.json?limit=858";
   url_qualy = "https://ergast.com/api/f1/drivers"
   constructor(private http: HttpClient) { }
@@ -24,4 +25,13 @@ export class DriversService {
   getAllRaceResults(id: string) {
     return this.http.get<Data>(this.url_qualy+"/"+id+"/results.json?limit=400");
   }
+
+  getDriver(id:string) {
+    return this.http.get<Data>(this.url_qualy+"/"+id+".json");
+  }
+
+  getNumSeasons(id:string) {
+    return this.http.get<Data>(this.url_qualy+"/"+id+"/seasons.json");
+  }
+
 }

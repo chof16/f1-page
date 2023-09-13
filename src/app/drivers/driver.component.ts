@@ -3,8 +3,7 @@ import { DriversService } from '../Services/drivers.service';
 import { Driver } from '../Model/Driver';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
-import { MatSort, MatSortModule, Sort } from '@angular/material/sort';
-import { LiveAnnouncer } from '@angular/cdk/a11y';
+import { MatSort, MatSortModule } from '@angular/material/sort';
 import { RouterModule } from '@angular/router';
 
 @Component({
@@ -12,7 +11,7 @@ import { RouterModule } from '@angular/router';
   selector: 'app-driver',
   templateUrl: './driver.component.html',
   styleUrls: ['./driver.component.less'],
-  imports: [MatPaginatorModule, MatTableModule, MatSortModule, RouterModule]
+  imports: [MatPaginatorModule, MatTableModule, MatSortModule,RouterModule]
 
 })
 export class DriversComponent implements OnInit, AfterViewInit {
@@ -22,9 +21,8 @@ export class DriversComponent implements OnInit, AfterViewInit {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  drivers: Driver[] = []
 
-  constructor(private driversService: DriversService, private _liveAnnouncer: LiveAnnouncer) { }
+  constructor(private driversService: DriversService) { }
   
   
   ngOnInit(): void {
@@ -33,8 +31,6 @@ export class DriversComponent implements OnInit, AfterViewInit {
         this.dataSource.data = drivers.MRData.DriverTable.Drivers
     })
   }
-
-
 
 
   ngAfterViewInit() {

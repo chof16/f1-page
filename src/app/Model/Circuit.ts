@@ -1,13 +1,14 @@
 export interface Circuit {
-    circuitId:   string;
-    url:         string;
+    circuitId: string;
+    url: string;
     circuitName: string;
-    Location:    Location;
+    Location: Location;
+
 }
 
 export interface Location {
-    lat:      string;
-    long:     string;
+    lat: string;
+    long: string;
     locality: string;
-    country:  string;
+    country: string;
 }

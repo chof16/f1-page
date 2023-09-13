@@ -1,0 +1,7 @@
+<div class="display-seasons">
+    <ng-template ngFor let-item [ngForOf]="allSeasons" let-i="index">
+
+        <a routerLink="/seasons/{{allSeasons[i].season}}">{{allSeasons[i].season}}</a>
+
+    </ng-template>
+</div>

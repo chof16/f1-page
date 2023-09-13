@@ -1,8 +1,5 @@
 <div class="container">
 
-    <h1>Next Race: {{currentRace?.Circuit?.circuitName}}, {{currentRace?.Circuit?.Location?.country}}, Round {{currentRace?.round}}</h1>
-    <h3>{{currentRace?.date}}</h3>
-
     <div class="tables">
         <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 table-pilots">
             <!-- Position Column -->
@@ -27,7 +24,8 @@
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
 
-        <table mat-table [dataSource]="dataSource2" class="mat-elevation-z8 table-constructor">
+
+        <table mat-table [dataSource]="dataSource2" class="mat-elevation-z8 table-constructor" *ngIf="id > '1957'">
             <!-- Position Column -->
             <ng-container matColumnDef="position">
                 <th mat-header-cell *matHeaderCellDef> Pos. </th>
@@ -50,5 +48,13 @@
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
     </div>
+
+    <h2>Schedule Season {{scheudle![0].season}}</h2>
+    <mat-list role="list">
+        <ng-template ngFor let-item [ngForOf]="scheudle" let-i="index">
+            <mat-list-item role="listitem">{{i+1}}. {{scheudle![i].Circuit.circuitName}}, {{scheudle![i].Circuit.Location.country}}</mat-list-item>
+            <mat-divider *ngIf="i+1 < scheudle!.length"></mat-divider>
+        </ng-template>
+    </mat-list>
 
 </div>

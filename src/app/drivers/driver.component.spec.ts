@@ -1,14 +1,15 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { DriversComponent } from './driver.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-describe('DriverComponent', () => {
+describe('DriversComponent', () => {
   let component: DriversComponent;
   let fixture: ComponentFixture<DriversComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [DriversComponent]
+      imports: [DriversComponent,HttpClientTestingModule,BrowserAnimationsModule]
     });
     fixture = TestBed.createComponent(DriversComponent);
     component = fixture.componentInstance;

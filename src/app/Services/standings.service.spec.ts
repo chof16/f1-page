@@ -1,15 +1,15 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { QualifyingService } from './qualifying.service';
+import { StandingsService } from './standings.service';
 
-describe('QualifyingService', () => {
-  let service: QualifyingService;
+describe('StandingsService', () => {
+  let service: StandingsService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports :[HttpClientTestingModule]
+      imports : [HttpClientTestingModule]
     });
-    service = TestBed.inject(QualifyingService);
+    service = TestBed.inject(StandingsService);
   });
 
   it('should be created', () => {

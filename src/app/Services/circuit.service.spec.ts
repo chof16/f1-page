@@ -1,15 +1,16 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { QualifyingService } from './qualifying.service';
 
-describe('QualifyingService', () => {
-  let service: QualifyingService;
+import { CircuitService } from './circuit.service';
+
+describe('CircuitService', () => {
+  let service: CircuitService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports :[HttpClientTestingModule]
     });
-    service = TestBed.inject(QualifyingService);
+    service = TestBed.inject(CircuitService);
   });
 
   it('should be created', () => {

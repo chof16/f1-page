@@ -1,0 +1,6 @@
+{
+    "api/images/*" : {
+        "target" : "https://en.wikipedia.org/w/api.php",
+        "secure" : false
+    }
+}

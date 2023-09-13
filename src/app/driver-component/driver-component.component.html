@@ -1,1 +1,13 @@
-<p>{{num_poles}}  {{num_victories}}</p>
+<div class="container" *ngIf="driver">
+
+    <h1>{{driver.givenName}} {{driver.familyName}}</h1>
+    <h3>{{driver.nationality}}</h3>
+
+    <p>Num of races: {{num_races}}</p>
+    <p>Num of seasons: {{num_seasons}}</p>
+    <p>Num of victories: {{num_victories}}</p>
+    <p>Num of poles position: {{num_poles}}</p>
+    <mat-divider ></mat-divider>
+
+
+</div>
