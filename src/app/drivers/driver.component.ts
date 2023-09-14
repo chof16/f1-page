@@ -5,26 +5,32 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSort, MatSortModule } from '@angular/material/sort';
 import { RouterModule } from '@angular/router';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import {MatIconModule} from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+
 
 @Component({
   standalone: true,
   selector: 'app-driver',
   templateUrl: './driver.component.html',
   styleUrls: ['./driver.component.less'],
-  imports: [MatPaginatorModule, MatTableModule, MatSortModule,RouterModule]
+  imports: [MatIconModule,MatPaginatorModule, MatTableModule, MatSortModule, RouterModule, MatFormFieldModule, MatInputModule,MatButtonModule]
 
 })
 export class DriversComponent implements OnInit, AfterViewInit {
 
-  displayedColumns: string[] = ['givenName', 'familyName', 'nationality', 'dateOfBirth', "moreInfo"];
+  displayedColumns: string[] = ['givenName', 'familyName', 'nationality', "moreInfo"];
   dataSource = new MatTableDataSource<Driver>();
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
+  show=false;
 
   constructor(private driversService: DriversService) { }
-  
-  
+
+
   ngOnInit(): void {
     this.driversService.getAllDrivers().subscribe(drivers => {
       if (drivers.MRData.DriverTable != undefined)
@@ -38,6 +44,14 @@ export class DriversComponent implements OnInit, AfterViewInit {
     this.dataSource.sort = this.sort;
   }
 
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
 
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+  }
 }
+
 

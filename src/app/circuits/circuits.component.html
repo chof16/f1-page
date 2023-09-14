@@ -1,0 +1,33 @@
+<div class="container">
+
+    <mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+
+        <!-- Position Column -->
+        <ng-container matColumnDef="grandprix">
+            <mat-header-cell mat-header-cell *matHeaderCellDef mat-sort-header> Name Grand Prix </mat-header-cell>
+            <mat-cell mat-cell *matCellDef="let element"> {{element.circuitName}} </mat-cell>
+        </ng-container>
+
+        <!-- Position Column -->
+        <ng-container matColumnDef="location">
+            <mat-header-cell mat-header-cell *matHeaderCellDef mat-sort-header> Location </mat-header-cell>
+            <mat-cell mat-cell *matCellDef="let element"> {{element.Location.locality}} </mat-cell>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="country">
+            <mat-header-cell mat-header-cell *matHeaderCellDef mat-sort-header> Country </mat-header-cell>
+            <mat-cell mat-cell *matCellDef="let element"> {{element.Location.country}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="moreInfo">
+            <mat-header-cell mat-header-cell *matHeaderCellDef ></mat-header-cell>
+            <mat-cell mat-cell *matCellDef="let element"> <a mat-raised-button
+                    routerLink="/circuits/{{element.circuitId}}">More info</a> </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+
+</div>
