@@ -20,7 +20,6 @@ export class CircuitsComponent implements OnInit {
   
   ngOnInit(): void {
     this.circuitService.getAllCircutis().subscribe(data => {this.dataSource.data=data.MRData.CircuitTable?.Circuits!
-      console.log(data.MRData.RaceTable?.Races)
     })
   }
 

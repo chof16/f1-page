@@ -23,8 +23,7 @@ export class CircuitService {
 
   getLastWinners(id:string, total:number) {
     let offset = String(total-3)
-    console.log(total)
-    return this.http.get<Data>(this.url_circuits + "/" + id + "/results/1.json?offset="+String(total-3))
+    return this.http.get<Data>(this.url_circuits + "/" + id + "/results/1.json?offset="+offset)
     
   }
 
