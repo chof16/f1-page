@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Data } from '../Model/Driver';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -9,9 +10,8 @@ export class SeasonService {
 
   constructor(private http:HttpClient) { }
 
-  url_seasons="https://ergast.com/api/f1/seasons.json?limit=74"
-  url_scheudle = "https://ergast.com/api/f1/current.json"
-  url_historical= "https://ergast.com/api/f1/"
+  url_seasons= environment.api + "seasons.json?limit=74"
+  url_scheudle = environment.api + "current.json"
 
 
   getAllSeasons(){
@@ -23,6 +23,6 @@ export class SeasonService {
   }
 
   getHistoricalSeasonCircuits(id:string) {
-    return this.http.get<Data>(this.url_historical+id+".json");
+    return this.http.get<Data>(environment.api+id+".json");
   }
 }

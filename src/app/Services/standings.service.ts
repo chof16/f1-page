@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Data } from '../Model/Driver';
+import { environment } from 'src/environments/environment';
 
 
 @Injectable({
@@ -9,10 +10,9 @@ import { Data } from '../Model/Driver';
 export class StandingsService {
 
 
-  url_pilots = "https://ergast.com/api/f1/current/driverStandings.json"
-  url_constructor = "https://ergast.com/api/f1/current/constructorStandings.json"
-  url ="https://ergast.com/api/f1/"
-  finsish_pilots="/driverStandings.json"
+  url_pilots = environment.api + "current/driverStandings.json"
+  url_constructor = environment.api + "current/constructorStandings.json"
+  finish_pilots="/driverStandings.json"
   finsish_constructors="/constructorStandings.json"
 
   constructor(private http:HttpClient) { }
@@ -25,13 +25,13 @@ export class StandingsService {
     return this.http.get<Data>(this.url_constructor);
   }
 
-  getHistoricalStandingsPilots(arg0: string) {
-    return this.http.get<Data>(this.url+arg0+this.finsish_pilots);
+  getHistoricalStandingsPilots(id: string) {
+    return this.http.get<Data>(environment.api+id+this.finish_pilots);
 
   }
 
-  getHistroricalStandingsConstructor(arg0: string) {
-    return this.http.get<Data>(this.url+arg0+this.finsish_constructors);
+  getHistroricalStandingsConstructor(id: string) {
+    return this.http.get<Data>(environment.api+id+this.finsish_constructors);
 
   }
 

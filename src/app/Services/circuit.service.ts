@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Data } from '../Model/Driver';
 import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class CircuitService {
 
   constructor(private http: HttpClient) { }
 
-  private url_circuits = "https://ergast.com/api/f1/circuits"
+  private url_circuits = environment.api + "circuits"
 
   getAllCircutis() {
     return this.http.get<Data>(this.url_circuits + ".json?limit=90")

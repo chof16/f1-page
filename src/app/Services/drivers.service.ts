@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Data, Driver } from '../Model/Driver';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 
 @Injectable({
@@ -9,9 +10,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class DriversService {
 
-
-  url_drivers = "https://ergast.com/api/f1/drivers.json?limit=858";
-  url_qualy = "https://ergast.com/api/f1/drivers"
+  url_drivers = environment.api + "drivers.json?limit=858";
+  url_qualy = environment.api + "drivers"
   constructor(private http: HttpClient) { }
 
   getAllDrivers(): Observable<Data> {
