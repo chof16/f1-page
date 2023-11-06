@@ -17,6 +17,7 @@ export class CircuitDetailsComponent implements OnInit {
   gp_totales!: number
   firstSeason!: number
   lastWinners: Race[] = []
+  imageCircuit: string = ""
 
 
 
@@ -37,6 +38,14 @@ export class CircuitDetailsComponent implements OnInit {
         this.circuit = data.MRData.RaceTable?.Races[0].Circuit
         this.gp_totales = Number(data.MRData.total)
         this.firstSeason = Number(data.MRData.RaceTable?.Races[0].season)
+        let url = data.MRData.RaceTable!.Races[0].Circuit.url.split("/").pop()
+        this.circuitService.getImage(url!).subscribe(photo => {
+          let circuitPic = Object.values(photo.query.pages)[0].thumbnail.source
+          let circuitPics = circuitPic.replaceAll('thumb/', '').split('/');
+          circuitPics.pop();
+          this.imageCircuit = circuitPics.join('/')
+
+        })
         return this.circuitService.getLastWinners(id, this.gp_totales)
       })).subscribe(data => {
         this.lastWinners.push(data.MRData.RaceTable!.Races![0])

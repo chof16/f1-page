@@ -1,17 +1,26 @@
 <div class="container">
 
-    <h1>{{circuit?.circuitName}}</h1>
+    <div class="info">
+        <h1>{{circuit?.circuitName}}</h1>
 
-    <h3>
-        {{circuit?.Location?.country}}
-    </h3>
+        <h3>
+            {{circuit?.Location?.country}}
+        </h3>
 
-    <p>First Race in {{firstSeason}}</p>
+        <p>First Race in {{firstSeason}}</p>
+
+        <div class="imagen" *ngIf="imageCircuit.length != 0">
+            <img src={{imageCircuit}} alt="">
+        </div>
+    </div>
+
+
 
     <p>Last 3 Winners</p>
-    <mat-list role="list">
+    <mat-list role="list" class="lista">
         <ng-template ngFor let-item [ngForOf]="lastWinners" let-i="index">
-            <mat-list-item role="listitem">{{lastWinners![i].season}} {{lastWinners![i].Results![0].Driver.givenName}} {{lastWinners![i].Results![0].Driver.familyName}}</mat-list-item>
+            <mat-list-item role="listitem">{{lastWinners![i].season}} {{lastWinners![i].Results![0].Driver.givenName}}
+                {{lastWinners![i].Results![0].Driver.familyName}}</mat-list-item>
             <mat-divider *ngIf="i+1 < lastWinners!.length"></mat-divider>
         </ng-template>
     </mat-list>

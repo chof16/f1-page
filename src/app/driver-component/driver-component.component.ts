@@ -11,6 +11,8 @@ import { Driver } from '../Model/Driver';
 export class DriverComponent implements OnInit {
 
   driver: Driver | undefined
+  fullName : string = ""
+  srcImage : string = ""
   num_races !: number
   num_seasons !: number
   image_url: string | undefined
@@ -36,6 +38,8 @@ export class DriverComponent implements OnInit {
     this.driverService.getDriver(id)
       .subscribe(data => {
         this.driver = data.MRData.DriverTable?.Drivers[0]
+        this.fullName = data.MRData.DriverTable?.Drivers[0].givenName + "_" + data.MRData.DriverTable?.Drivers[0].familyName
+        this.getPhoto();
       },)
   }
 
@@ -60,6 +64,17 @@ export class DriverComponent implements OnInit {
     this.driverService.getNumSeasons(id).
       subscribe(data => this.num_seasons = Number(data.MRData.total)
       )
+  }
+
+  getPhoto() {
+    this.driverService.getPhoto(this.fullName)
+      .subscribe(photo => {
+
+        let profilePic = Object.values(photo.query.pages)[0].thumbnail.source
+        let profilePics = profilePic.replaceAll('thumb/', '').split('/');
+        profilePics.pop();
+        this.srcImage = profilePics.join('/')
+      });
   }
 
 }

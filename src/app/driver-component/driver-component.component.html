@@ -7,7 +7,10 @@
     <p>Num of seasons: {{num_seasons}}</p>
     <p>Num of victories: {{num_victories}}</p>
     <p>Num of poles position: {{num_poles}}</p>
-    <mat-divider ></mat-divider>
 
+    <div class="imagen" *ngIf="srcImage.length != 0">
+        <img src={{srcImage}} alt="">
+    </div>
+    <mat-divider ></mat-divider>
 
 </div>
