@@ -1,5 +1,10 @@
 <div class="container" *ngIf="driver">
 
+    <ul class="breadcrumb">
+        <li><a routerLink="/">Home</a></li>
+        <li><a routerLink="/drivers/">Drivers</a></li>
+    </ul>
+
     <h1>{{driver.givenName}} {{driver.familyName}}</h1>
     <h3>{{driver.nationality}}</h3>
 
@@ -7,10 +12,14 @@
     <p>Num of seasons: {{num_seasons}}</p>
     <p>Num of victories: {{num_victories}}</p>
     <p>Num of poles position: {{num_poles}}</p>
-
+    <div *ngIf="actual_constructor">
+        <p>Actual constructor: {{actual_constructor.name}}</p>
+    </div>
     <div class="imagen" *ngIf="srcImage.length != 0">
         <img src={{srcImage}} alt="">
     </div>
-    <mat-divider ></mat-divider>
+    <mat-divider></mat-divider>
 
+    <apx-chart [series]="chartOptions.series!" [chart]="chartOptions.chart!" [labels]="chartOptions.labels"
+        [fill]="chartOptions.fill!" [stroke]="chartOptions.stroke!" [responsive]="chartOptions.responsive!"></apx-chart>
 </div>

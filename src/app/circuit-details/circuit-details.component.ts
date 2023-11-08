@@ -3,9 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Circuit } from '../Model/Circuit';
 import { CircuitService } from '../Services/circuit.service';
 import { Race } from '../Model/DriverQualyFying';
-import { concatMap, mergeMap } from 'rxjs';
-import { Data } from '../Model/Driver';
-
+import { concatMap, forkJoin } from 'rxjs';
 @Component({
   selector: 'app-circuit-details',
   templateUrl: './circuit-details.component.html',
@@ -39,18 +37,16 @@ export class CircuitDetailsComponent implements OnInit {
         this.gp_totales = Number(data.MRData.total)
         this.firstSeason = Number(data.MRData.RaceTable?.Races[0].season)
         let url = data.MRData.RaceTable!.Races[0].Circuit.url.split("/").pop()
-        this.circuitService.getImage(url!).subscribe(photo => {
-          let circuitPic = Object.values(photo.query.pages)[0].thumbnail.source
-          let circuitPics = circuitPic.replaceAll('thumb/', '').split('/');
-          circuitPics.pop();
-          this.imageCircuit = circuitPics.join('/')
-
-        })
-        return this.circuitService.getLastWinners(id, this.gp_totales)
-      })).subscribe(data => {
-        this.lastWinners.push(data.MRData.RaceTable!.Races![0])
-        this.lastWinners.push(data.MRData.RaceTable!.Races![1])
-        this.lastWinners.push(data.MRData.RaceTable!.Races![2])
+        // This tow calls depend of data of the first call to service
+        return forkJoin([this.circuitService.getLastWinners(id, this.gp_totales), this.circuitService.getImage(url!)])
+      })).subscribe((data) => {
+        this.lastWinners.push(data[0].MRData.RaceTable!.Races![0])
+        this.lastWinners.push(data[0].MRData.RaceTable!.Races![1])
+        this.lastWinners.push(data[0].MRData.RaceTable!.Races![2])
+        let profilePic = Object.values(data[1].query.pages)[0].thumbnail.source
+        let profilePics = profilePic.replaceAll('thumb/', '').split('/');
+        profilePics.pop();
+        this.imageCircuit = profilePics.join('/')
       })
   }
 

@@ -1,5 +1,9 @@
 <div class="container">
 
+    <ul class="breadcrumb">
+        <li><a routerLink="/">Home</a></li>
+        <li><a routerLink="/seasons/">Seasons</a></li>
+    </ul>
     <div class="tables">
         <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 table-pilots">
             <!-- Position Column -->
@@ -49,12 +53,16 @@
         </table>
     </div>
 
-    <h2>Schedule Season {{scheudle![0].season}}</h2>
-    <mat-list role="list">
-        <ng-template ngFor let-item [ngForOf]="scheudle" let-i="index">
-            <mat-list-item role="listitem">{{i+1}}. {{scheudle![i].Circuit.circuitName}}, {{scheudle![i].Circuit.Location.country}}</mat-list-item>
-            <mat-divider *ngIf="i+1 < scheudle!.length"></mat-divider>
-        </ng-template>
-    </mat-list>
+    <div *ngIf="scheudle != undefined">
+        <h2>Schedule Season {{scheudle[0].season}}</h2>
+        <mat-list role="list">
+            <ng-template ngFor let-item [ngForOf]="scheudle" let-i="index">
+                <mat-list-item role="listitem">{{i+1}}. {{scheudle![i].Circuit.circuitName}},
+                    {{scheudle![i].Circuit.Location.country}}</mat-list-item>
+                <mat-divider *ngIf="i+1 < scheudle!.length"></mat-divider>
+            </ng-template>
+        </mat-list>
+    </div>
+
 
 </div>

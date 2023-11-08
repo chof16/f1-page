@@ -24,6 +24,9 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { FlexLayoutModule } from "@angular/flex-layout";
+import { NgApexchartsModule } from 'ng-apexcharts';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+
 
 @NgModule({
   declarations: [
@@ -51,10 +54,10 @@ import { FlexLayoutModule } from "@angular/flex-layout";
     MatSidenavModule,
     MatToolbarModule,
     MatIconModule,
-    FlexLayoutModule
-    
+    FlexLayoutModule,
+    NgApexchartsModule
   ],
-  providers: [DriversService,ApiCacheInterceptor],
+  providers: [DriversService,ApiCacheInterceptor,{provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { 

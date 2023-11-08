@@ -1,7 +1,9 @@
+import { Constructor } from "./Constructor"
 import { Circuit } from "./Circuit";
 import { Race } from "./DriverQualyFying";
 import { SeasonTable } from "./Season";
 import { StandingsTable } from "./Standings";
+import { Status } from "./Status";
 
 export interface Data {
     MRData: MRData;
@@ -20,10 +22,20 @@ export interface MRData {
     SeasonTable?: SeasonTable;
     StandingsTable?: StandingsTable;
     CircuitTable?: CircuitTable;
+    ConstructorTable? : ConstructorTable;
+    StatusTable? : StatusTable;
 }
 
 export interface CircuitTable {
     Circuits: Circuit[] 
+}
+
+export interface StatusTable {
+    Status: Status[] 
+}
+
+export interface ConstructorTable {
+    Constructors: Constructor[] 
 }
 
 export interface RaceTable {

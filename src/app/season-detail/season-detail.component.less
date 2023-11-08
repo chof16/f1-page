@@ -1,10 +1,44 @@
 .container {
+
+    /* Style the list */
+    ul.breadcrumb {
+        margin-left: 3em;
+        padding: 0;
+        list-style: none;
+    }
+
+    /* Display list items side by side */
+    ul.breadcrumb li {
+        display: inline;
+        font-size: 18px;
+    }
+
+    /* Add a slash symbol (/) before/behind each list item */
+    ul.breadcrumb li+li:before {
+        padding: 8px;
+        color: black;
+        content: "/\00a0";
+    }
+
+    /* Add a color to all links inside the list */
+    ul.breadcrumb li a {
+        color: #0F2C59;
+        text-decoration: none;
+    }
+
+    /* Add a color on mouse-over */
+    ul.breadcrumb li a:hover {
+        color: #09215a;
+        text-decoration: underline;
+    }
+
     .tables {
         display: flex;
         flex-direction: row;
         justify-content: space-around;
         flex-wrap: nowrap;
         margin: 2em;
+
         .table-pilots,
         .table-constructor {
             min-width: 100px;
@@ -29,11 +63,17 @@
 @media screen and (max-width: 425px) {
     .container {
         margin: 0;
+        text-align: center;
+        ul.breadcrumb {
+            margin-left: 0;
+        }
+
         .tables {
             flex-direction: column;
             justify-content: none;
             gap: 2em 0;
             margin: 0;
+
             .table-pilots,
             .table-constructor {
                 width: 100%;
