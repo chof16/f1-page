@@ -26,6 +26,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { ConstructorDetailComponent } from './constructor-detail/constructor-detail.component';
 
 
 @NgModule({
@@ -36,6 +37,7 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
     SeasonDetailComponent,
     CircuitsComponent,
     CircuitDetailsComponent,
+    ConstructorDetailComponent,
   ],
   imports: [
     BrowserModule,

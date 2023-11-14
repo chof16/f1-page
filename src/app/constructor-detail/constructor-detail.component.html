@@ -1,0 +1,29 @@
+<div class="container-constructor" *ngIf="constructorSelected">
+
+    <ul class="breadcrumb">
+        <li><a routerLink="/">Home</a></li>
+        <li><a routerLink="/constructors/">Constructors</a></li>
+    </ul>
+
+    <div class="info">
+        <div id="general-info">
+            <h1>{{constructorSelected.name}}</h1>
+            <h3>{{constructorSelected.nationality}}</h3>
+
+            <p>Races: {{num_races}}</p>
+            <p>Seasons: {{num_seasons}}</p>
+            <p>Victories: {{num_victories}}</p>
+            <p>Constructor championships: {{numChampionships}}</p>
+        </div>
+
+        <div *ngIf="actual_drivers!==undefined && actual_drivers.Drivers.length!=0" id="drivers">
+            <h1>Actual drivers</h1>
+            <a routerLink="/drivers/{{actual_drivers.Drivers[0].driverId}}">{{actual_drivers.Drivers[0].givenName}} {{actual_drivers.Drivers[0].familyName}}</a>
+            <a routerLink="/drivers/{{actual_drivers.Drivers[1].driverId}}">{{actual_drivers.Drivers[1].givenName}} {{actual_drivers.Drivers[1].familyName}}</a>
+        </div>
+    </div>
+
+
+
+
+</div>

@@ -7,6 +7,8 @@ import { SeasonDetailComponent } from './season-detail/season-detail.component';
 import { SeasonsComponent } from './seasons/seasons.component';
 import { CircuitsComponent } from './circuits/circuits.component';
 import { CircuitDetailsComponent } from './circuit-details/circuit-details.component';
+import { ConstructorsComponent } from './constructors/constructors.component';
+import { ConstructorDetailComponent } from './constructor-detail/constructor-detail.component';
 const routes: Routes = [
   { path: "", component: HomeComponent },
   { path: "drivers", component: DriversComponent},
@@ -14,7 +16,11 @@ const routes: Routes = [
   { path: "seasons", component: SeasonsComponent},
   { path: "seasons/:id", component: SeasonDetailComponent},
   { path: "circuits", component: CircuitsComponent},
-  { path: "circuits/:id", component: CircuitDetailsComponent}
+  { path: "circuits/:id", component: CircuitDetailsComponent},
+  { path: "constructors", component: ConstructorsComponent},
+  { path: "constructors/:id", component: ConstructorDetailComponent}
+
+
 ];
 
 @NgModule({
