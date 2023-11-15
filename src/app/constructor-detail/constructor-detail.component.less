@@ -17,8 +17,8 @@
             display: flex;
             flex-direction: column;
             gap: 1em;
+
             a {
-                text-decoration: none;
                 color: black;
             }
         }
@@ -62,19 +62,40 @@
         }
 
     }
+
+    .lista {
+        display: grid;
+        grid-template-columns: repeat(auto-fit,
+                minmax(300px, 1fr));
+    }
 }
 
 
 @media screen and (max-width:767px) {
-    .container {
+    .container-constructor {
         display: flex;
         flex-direction: column;
         align-items: center;
+        gap: 1em;
 
         .imagen {
             position: static;
             text-align: center;
 
+        }
+
+        #cabecera {
+            margin-left: 1.5em;
+        }
+
+
+    }
+
+    .lista {
+        .mdc-list-item {
+            padding: 0;
+            margin-left: 2em;
+            max-width: 200px;
         }
     }
 }

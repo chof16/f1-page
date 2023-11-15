@@ -13,7 +13,7 @@
     <p>Num of victories: {{num_victories}}</p>
     <p>Num of poles position: {{num_poles}}</p>
     <div *ngIf="actual_constructor">
-        <p>Actual constructor: {{actual_constructor.name}}</p>
+        <p>Actual constructor: <a routerLink="/constructors/{{actual_constructor.constructorId}}"> {{actual_constructor.name}}</a></p> 
     </div>
     <div class="imagen" *ngIf="srcImage.length != 0">
         <img src={{srcImage}} alt="">

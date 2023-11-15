@@ -23,18 +23,23 @@ export class ConstructorsService {
 
   }
   getResults(id: string): Observable<Data> {
-    return this.http.get<Data>(environment.api +"constructors/" + id + "/constructorStandings.json");
+    return this.http.get<Data>(environment.api + "constructors/" + id + "/constructorStandings.json");
 
   }
 
   getRaces(id: string): Observable<Data> {
-    return this.http.get<Data>(environment.api +"constructors/" + id + "/results.json");
+    return this.http.get<Data>(environment.api + "constructors/" + id + "/results.json");
 
   }
+  getAllDrivers(id: string): Observable<Data> {
+    return this.http.get<Data>(`${environment.api}constructors/${id}/drivers.json?limit=97`);
+  }
+
   getDrivers(id: string): Observable<Data> {
     return this.http.get<Data>(this.url_drivers + id + "/drivers.json");
 
   }
+
   getConstructor(id: string): Observable<Data> {
     return this.http.get<Data>(environment.api + "constructors/" + id + ".json");
 

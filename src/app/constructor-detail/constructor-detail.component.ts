@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { DriverTable } from '../Model/Driver';
+import { Driver, DriverTable } from '../Model/Driver';
 import { Constructor } from '../Model/Constructor';
 import { ConstructorsService } from '../Services/constructors.service';
 import { forkJoin } from 'rxjs';
@@ -22,6 +22,8 @@ export class ConstructorDetailComponent {
   image_url: string | undefined
   numChampionships: number | undefined;
   actual_drivers: DriverTable | undefined
+  drivers: Driver[]=[]
+
 
   constructor(private route: ActivatedRoute, private constructorsService: ConstructorsService) { }
 
@@ -35,7 +37,7 @@ export class ConstructorDetailComponent {
 
   getConstructorInfo() {
     let id = this.getID();
-    forkJoin([this.constructorsService.getConstructor(id), this.constructorsService.getDrivers(id), this.constructorsService.getVictories(id), this.constructorsService.getResults(id), this.constructorsService.getChamponships(id),this.constructorsService.getNumSeasons(id), this.constructorsService.getRaces(id)]).
+    forkJoin([this.constructorsService.getConstructor(id), this.constructorsService.getDrivers(id), this.constructorsService.getVictories(id), this.constructorsService.getResults(id), this.constructorsService.getChamponships(id),this.constructorsService.getNumSeasons(id), this.constructorsService.getRaces(id),this.constructorsService.getAllDrivers(id)]).
       subscribe(data => {
         this.constructorSelected = data[0].MRData.ConstructorTable?.Constructors[0]
         console.log(this.constructorSelected)
@@ -48,6 +50,7 @@ export class ConstructorDetailComponent {
         this.numChampionships = Number(data[4].MRData.total)
         this.num_seasons = Number(data[5].MRData.total)
         this.num_races = Number(data[6].MRData.total)
+        this.drivers = data[7].MRData.DriverTable!.Drivers!
         this.getPhoto()
       })
   }
